@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
-function Dropdown({ options, selected, onSelect }) {
+function Dropdown({ options, value, onChange }) {
   const [isOpen, setIsOpen] = useState(false)
   const chevronClassName = cn('w-5', 'h-5', 'transition-all', {
     'rotate-180': isOpen,
   })
 
   const handleOptionClick = option => {
-    onSelect(option)
+    onChange(option)
     toggle()
   }
 
@@ -22,7 +22,7 @@ function Dropdown({ options, selected, onSelect }) {
         className="flex items-center justify-between w-full px-4 py-3 bg-blue-500 font-semibold text-white"
         onClick={toggle}
       >
-        <span>{selected?.label || 'Select...'}</span>
+        <span>{value?.label || 'Select...'}</span>
         <ChevronDownIcon className={chevronClassName} />
       </button>
       {isOpen && (

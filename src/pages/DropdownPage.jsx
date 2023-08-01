@@ -12,9 +12,7 @@ function DropdownPage() {
   const [selected, setSelected] = useState(null)
   const handleSelect = option => setSelected(option)
 
-  return (
-    <Dropdown options={options} selected={selected} onSelect={handleSelect} />
-  )
+  return <Dropdown options={options} value={selected} onChange={handleSelect} />
 }
 
 export default DropdownPage
