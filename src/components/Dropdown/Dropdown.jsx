@@ -3,10 +3,16 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
+import PanelButton from '../PanelButton/PanelButton'
+
 function Dropdown({ options, value, onChange }) {
   const [isOpen, setIsOpen] = useState(false)
   const chevronClassName = cn('w-5', 'h-5', 'transition-all', {
     'rotate-180': isOpen,
+  })
+  const topPanelClassName = cn('bg-blue-500 font-semibold text-white', {
+    rounded: !isOpen,
+    'rounded-t': isOpen,
   })
 
   const handleOptionClick = option => {
@@ -18,25 +24,22 @@ function Dropdown({ options, value, onChange }) {
 
   return (
     <div className="p-2 text-lg">
-      <button
-        className="flex items-center justify-between w-full px-4 py-3 bg-blue-500 font-semibold text-white"
-        onClick={toggle}
-      >
+      <PanelButton className={topPanelClassName} onClick={toggle}>
         <span>{value?.label || 'Select...'}</span>
         <ChevronDownIcon className={chevronClassName} />
-      </button>
+      </PanelButton>
       {isOpen && (
-        <div className="bg-blue-200">
+        <div className="bg-blue-200 rounded-b overflow-hidden">
           {options.map(option => {
             const { label, value } = option
             return (
-              <button
+              <PanelButton
+                className="hover:bg-blue-500 hover:text-white"
                 key={value}
-                className="w-full px-4 py-3 text-left hover:bg-blue-500 hover:text-white"
                 onClick={() => handleOptionClick(option)}
               >
                 {label}
-              </button>
+              </PanelButton>
             )
           })}
         </div>
