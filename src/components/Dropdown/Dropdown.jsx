@@ -1,7 +1,7 @@
+import cn from 'classnames'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import cn from 'classnames'
 
 function Dropdown({ options, selected, onSelect }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -9,7 +9,7 @@ function Dropdown({ options, selected, onSelect }) {
     'rotate-180': isOpen,
   })
 
-  const handleSelect = option => {
+  const handleOptionClick = option => {
     onSelect(option)
     toggle()
   }
@@ -22,7 +22,7 @@ function Dropdown({ options, selected, onSelect }) {
         className="flex items-center justify-between w-full px-4 py-3 bg-blue-500 font-semibold text-white"
         onClick={toggle}
       >
-        {selected ? <span>{selected.label}</span> : <span>Select...</span>}
+        <span>{selected?.label || 'Select...'}</span>
         <ChevronDownIcon className={chevronClassName} />
       </button>
       {isOpen && (
@@ -33,7 +33,7 @@ function Dropdown({ options, selected, onSelect }) {
               <button
                 key={value}
                 className="w-full px-4 py-3 text-left hover:bg-blue-500 hover:text-white"
-                onClick={() => handleSelect(option)}
+                onClick={() => handleOptionClick(option)}
               >
                 {label}
               </button>
