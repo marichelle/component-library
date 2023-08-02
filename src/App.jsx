@@ -1,12 +1,10 @@
+import Route from './components/Route/Route'
 import SideBar from './components/SideBar/SideBar'
-import { useNavigationContext } from './contexts/NavigationContext'
 import AccordionPage from './pages/AccordionPage'
 import ButtonPage from './pages/ButtonPage'
 import DropdownPage from './pages/DropdownPage'
 
 function App() {
-  const { currentPath } = useNavigationContext()
-
   return (
     <div className="flex p-8">
       {/* Static sidebar for desktop */}
@@ -14,10 +12,16 @@ function App() {
         <SideBar />
       </div>
 
-      <main className="w-full">
-        {currentPath === '/accordion' && <AccordionPage />}
-        {currentPath === '/buttons' && <ButtonPage />}
-        {currentPath === '/dropdown' && <DropdownPage />}
+      <main className="w-full py-3">
+        <Route path="/">
+          <AccordionPage />
+        </Route>
+        <Route path="/buttons">
+          <ButtonPage />
+        </Route>
+        <Route path="/dropdown">
+          <DropdownPage />
+        </Route>
       </main>
     </div>
   )

@@ -4,7 +4,12 @@ function Link({ children, to, ...rest }) {
   const { navigate } = useNavigationContext()
 
   const handleClick = e => {
+    if (e.ctrlKey || e.metaKey) {
+      return
+    }
+
     e.preventDefault()
+
     navigate(to)
   }
 

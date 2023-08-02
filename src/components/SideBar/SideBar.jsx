@@ -6,7 +6,7 @@ import Link from '../Link/Link'
 const navigation = [
   {
     name: 'Accordion',
-    path: '/accordion',
+    path: '/',
   },
   {
     name: 'Buttons',
