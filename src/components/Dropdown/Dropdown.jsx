@@ -1,11 +1,12 @@
 import cn from 'classnames'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
 import PanelButton from '../PanelButton/PanelButton'
 
 function Dropdown({ options, value, onChange }) {
+  const ref = useRef()
   const [isOpen, setIsOpen] = useState(false)
   const chevronClassName = cn('w-5', 'h-5', 'transition-all', {
     'rotate-180': isOpen,
@@ -22,8 +23,20 @@ function Dropdown({ options, value, onChange }) {
 
   const toggle = () => setIsOpen(prevState => !prevState)
 
+  useEffect(() => {
+    const handler = e => {
+      if (!ref.current.contains(e.target)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('click', handler, true)
+
+    return () => document.removeEventListener('click', handler)
+  }, [])
+
   return (
-    <div className="p-2 text-lg">
+    <div className="p-2 text-lg" ref={ref}>
       <PanelButton className={topPanelClassName} onClick={toggle}>
         <span>{value?.label || 'Select...'}</span>
         <ChevronDownIcon className={chevronClassName} />
@@ -50,8 +63,8 @@ function Dropdown({ options, value, onChange }) {
 
 Dropdown.propTypes = {
   options: PropTypes.array.isRequired,
-  selected: PropTypes.object,
-  onSelect: PropTypes.func,
+  value: PropTypes.object,
+  onChange: PropTypes.func,
 }
 
 export default Dropdown
