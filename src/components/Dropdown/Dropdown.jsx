@@ -11,7 +11,7 @@ function Dropdown({ options, value, onChange }) {
   const chevronClassName = cn('w-5', 'h-5', 'transition-all', {
     'rotate-180': isOpen,
   })
-  const topPanelClassName = cn('bg-blue-500 font-semibold text-white', {
+  const topPanelClassName = cn('bg-indigo-500 font-semibold text-white', {
     rounded: !isOpen,
     'rounded-t': isOpen,
   })
@@ -41,12 +41,12 @@ function Dropdown({ options, value, onChange }) {
         <ChevronDownIcon className={chevronClassName} />
       </PanelButton>
       {isOpen && (
-        <div className="bg-blue-200 rounded-b overflow-hidden">
+        <div className="bg-indigo-200 rounded-b overflow-hidden">
           {options.map(option => {
             const { label, value } = option
             return (
               <PanelButton
-                className="hover:bg-blue-500 hover:text-white"
+                className="text-indigo-700 hover:bg-indigo-500 hover:text-white"
                 key={value}
                 onClick={() => handleOptionClick(option)}
               >

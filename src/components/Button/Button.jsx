@@ -19,7 +19,7 @@ function Button({
     'py-1.5',
     'border',
     'font-semibold',
-    'text-sm',
+    'text-lg',
     'shadow-md',
     'hover:shadow-none',
     {

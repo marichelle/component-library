@@ -11,18 +11,32 @@ function ButtonPage() {
       <div className="flex flex-row">
         <Button variation="primary" onClick={handleClick}>
           <BellIcon className="w-4 h-4" />
-          Primary
+          With Icon
         </Button>
         <Button variation="primary" rounded>
           <BellIcon className="w-4 h-4" />
-          Primary
+          With Icon
         </Button>
         <Button variation="primary" outline>
           <BellAlertIcon className="w-4 h-4" />
-          Primary
+          With Icon
         </Button>
         <Button variation="primary" outline rounded>
           <BellAlertIcon className="w-4 h-4" />
+          With Icon
+        </Button>
+      </div>
+      <div className="flex flex-row">
+        <Button variation="primary" onClick={handleClick}>
+          Primary
+        </Button>
+        <Button variation="primary" rounded>
+          Primary
+        </Button>
+        <Button variation="primary" outline>
+          Primary
+        </Button>
+        <Button variation="primary" outline rounded>
           Primary
         </Button>
       </div>

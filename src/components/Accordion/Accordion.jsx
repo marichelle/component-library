@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
 function Accordion({ items }) {
-  const [expandedIndex, setExpandedIndex] = useState(-1)
+  const [expandedIndex, setExpandedIndex] = useState(0)
 
   const handleClick = nextIndex =>
     setExpandedIndex(prevState => (prevState === nextIndex ? -1 : nextIndex))
@@ -27,14 +27,16 @@ function Accordion({ items }) {
         return (
           <li className={itemClassName} key={id}>
             <button
-              className="flex items-center justify-between w-full text-left text-xl bg-indigo-700 text-white p-2"
+              className="flex items-center justify-between w-full text-left text-xl bg-indigo-500 text-white px-4 py-2"
               onClick={() => handleClick(index)}
             >
               {label}
               <ChevronDownIcon className={chevronClassName} />
             </button>
             {isExpanded && (
-              <p className="p-2 bg-indigo-50 text-indigo-900">{content}</p>
+              <p className="px-4 py-2 bg-indigo-50 text-indigo-700">
+                {content}
+              </p>
             )}
           </li>
         )

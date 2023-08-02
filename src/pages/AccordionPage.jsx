@@ -1,27 +1,6 @@
 import Accordion from '../components/Accordion/Accordion'
 
-const faq1 = [
-  {
-    id: 1,
-    label: 'Modi, a?',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, saepe fugiat? Mollitia, magni omnis. Beatae mollitia ex aspernatur maiores, illum modi, provident officiis corporis atque in tenetur blanditiis quidem sequi, recusandae consectetur repellendus sint veritatis sit. Quia in quam sequi ea nostrum qui, eaque illo facilis voluptas similique? Officiis, dolore.',
-  },
-  {
-    id: 2,
-    label: 'Fugit, commodi?',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quisquam. Doloremque distinctio in harum nesciunt suscipit quam quasi totam natus possimus excepturi hic ipsa sint illo molestias, similique fuga perspiciatis nam mollitia culpa non. Sit explicabo delectus inventore, voluptate ex molestias ipsa mollitia rerum dolorem dolorum dicta et quae exercitationem.',
-  },
-  {
-    id: 3,
-    label: 'Eaque, officiis?',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, magni vitae voluptas odio nulla reprehenderit, aliquam autem non molestiae minus reiciendis nihil distinctio et at, sapiente inventore facere! Blanditiis culpa odit praesentium reiciendis. Atque, hic qui ad magnam inventore laudantium provident illum commodi, a beatae nihil voluptatibus delectus accusantium et.',
-  },
-]
-
-const faq2 = [
+const faq = [
   {
     id: 1,
     label: 'What is digital marketing?',
@@ -43,16 +22,7 @@ const faq2 = [
 ]
 
 function AccordionPage() {
-  return (
-    <div className="flex flex-col gap-6">
-      <div>
-        <Accordion items={faq1} />
-      </div>
-      <div>
-        <Accordion items={faq2} />
-      </div>
-    </div>
-  )
+  return <Accordion items={faq} />
 }
 
 export default AccordionPage
