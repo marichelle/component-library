@@ -16,6 +16,10 @@ const navigation = [
     name: 'Dropdown',
     path: '/dropdown',
   },
+  {
+    name: 'Modal',
+    path: '/modal',
+  },
 ]
 
 function SideBar() {
