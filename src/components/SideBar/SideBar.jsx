@@ -20,13 +20,17 @@ const navigation = [
     name: 'Modal',
     path: '/modal',
   },
+  {
+    name: 'Table',
+    path: '/table',
+  },
 ]
 
 function SideBar() {
   const { currentPath } = useNavigationContext()
 
   return (
-    <nav className="flex flex-1 flex-col">
+    <nav className="flex flex-col flex-1">
       {navigation.map(({ name, path }) => {
         return (
           <Link
