@@ -1,11 +1,25 @@
 import { useState } from 'react'
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  ChevronUpDownIcon,
-} from '@heroicons/react/24/solid'
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'
 
 import Table from '../Table/Table'
+
+const getIcon = (label, sortBy, sortOrder) =>
+  sortBy === label && sortOrder === 'asc' ? (
+    <div className="flex flex-col">
+      <ChevronUpIcon className="w-4 h-4 -m-1" />
+      <ChevronDownIcon className="w-4 h-4 -m-1 text-white group-hover:text-gray-200" />
+    </div>
+  ) : sortBy === label && sortOrder === 'desc' ? (
+    <div className="flex flex-col">
+      <ChevronUpIcon className="w-4 h-4 -m-1 text-white group-hover:text-gray-200" />
+      <ChevronDownIcon className="w-4 h-4 -m-1" />
+    </div>
+  ) : (
+    <div className="flex flex-col">
+      <ChevronUpIcon className="w-4 h-4 -m-1" />
+      <ChevronDownIcon className="w-4 h-4 -m-1" />
+    </div>
+  )
 
 function SortableTable(props) {
   const [sortBy, setSortBy] = useState(null)
@@ -27,29 +41,27 @@ function SortableTable(props) {
             return 'asc'
         }
       })
-    } else setSortOrder('asc')
+    } else {
+      setSortOrder('asc')
+    }
 
     setSortBy(label)
   }
 
+  // if sortable column exists, define sortable header
   const updatedConfig = config.map(column =>
     column.sortValue
       ? {
           ...column,
           header: () => (
-            <th>
-              <div className="flex">
+            <th className="p-3 group hover:bg-gray-200">
+              <button
+                className="flex items-center"
+                onClick={() => handleClick(column.label)}
+              >
                 <span className="mr-2">{column.label}</span>
-                <button onClick={() => handleClick(column.label)}>
-                  {sortBy === column.label && sortOrder === 'asc' ? (
-                    <ChevronUpIcon className="w-4 h-4" />
-                  ) : sortBy === column.label && sortOrder === 'desc' ? (
-                    <ChevronDownIcon className="w-4 h-4" />
-                  ) : (
-                    <ChevronUpDownIcon className="w-5 h-5" />
-                  )}
-                </button>
-              </div>
+                {getIcon(column.label, sortBy, sortOrder)}
+              </button>
             </th>
           ),
         }

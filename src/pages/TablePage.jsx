@@ -12,17 +12,7 @@ const configFruits = [
   },
   {
     label: 'Score',
-    /* header: () => (
-      <th>
-        <div className="flex">
-          <span>Score</span>
-          <button onClick={() => console.log('sort by column')}>
-            <ChevronUpDownIcon className="w-6 h-6" />
-          </button>
-        </div>
-      </th>
-    ), */
-    render: fruit => fruit.score,
+    render: fruit => <div className="text-center">{fruit.score}</div>,
     sortValue: fruit => fruit.score,
   },
 ]

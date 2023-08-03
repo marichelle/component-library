@@ -5,8 +5,8 @@ function Table({ config, data, keyFn }) {
     if (header) return <Fragment key={label}>{header()}</Fragment>
 
     return (
-      <th className="p-3" key={label}>
-        <div className="flex items-center">{label}</div>
+      <th key={label}>
+        <div className="flex items-center p-3">{label}</div>
       </th>
     )
   })
