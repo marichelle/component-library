@@ -3,29 +3,35 @@ import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/solid'
 import Button from '../components/Button/Button'
 import { useReducer } from 'react'
 
+// Prevent typos by using constant action types
+const ADD_VALUE_TO_COUNT = 'ADD_VALUE'
+const DECREMENT_COUNT = 'DECREMENT'
+const INCREMENT_COUNT = 'INCREMENT'
+const SET_VALUE_TO_ADD = 'SET_VALUE'
+
 const reducer = (state, action) => {
   const { type } = action
 
   switch (type) {
-    case 'ADD_VALUE':
+    case ADD_VALUE_TO_COUNT:
       return {
         count: state.count + state.valueToAdd,
         valueToAdd: 0,
       }
 
-    case 'DECREMENT':
+    case DECREMENT_COUNT:
       return {
         ...state,
         count: state.count - 1,
       }
 
-    case 'INCREMENT':
+    case INCREMENT_COUNT:
       return {
         ...state,
         count: state.count + 1,
       }
 
-    case 'SET_VALUE':
+    case SET_VALUE_TO_ADD:
       return {
         ...state,
         valueToAdd: action.payload,
@@ -46,17 +52,17 @@ const Counter = ({ initialCount }) => {
 
   const handleChange = e =>
     dispatch({
-      type: 'SET_VALUE',
+      type: SET_VALUE_TO_ADD,
       payload: parseInt(e.target.value, 10) || 0,
     })
 
-  const handleDecrement = () => dispatch({ type: 'DECREMENT' })
+  const handleDecrement = () => dispatch({ type: DECREMENT_COUNT })
 
-  const handleIncrement = () => dispatch({ type: 'INCREMENT' })
+  const handleIncrement = () => dispatch({ type: INCREMENT_COUNT })
 
   const handleSubmit = e => {
     e.preventDefault()
-    dispatch({ type: 'ADD_VALUE' })
+    dispatch({ type: ADD_VALUE_TO_COUNT })
   }
 
   return (
