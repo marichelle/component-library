@@ -15,6 +15,15 @@ const configFruits = [
     render: fruit => <div className="text-center">{fruit.score}</div>,
     sortValue: fruit => fruit.score,
   },
+  {
+    label: (
+      <>
+        Score<sup>2</sup>
+      </>
+    ),
+    render: fruit => <div className="text-center">{fruit.score ** 2}</div>,
+    sortValue: fruit => fruit.score,
+  },
 ]
 
 const fruits = [
