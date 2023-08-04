@@ -1,22 +1,62 @@
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/react/24/solid'
 
 import Button from '../components/Button/Button'
-import { useState } from 'react'
+import { useReducer } from 'react'
+
+const reducer = (state, action) => {
+  const { type } = action
+
+  switch (type) {
+    case 'ADD_VALUE':
+      return {
+        count: state.count + state.valueToAdd,
+        valueToAdd: 0,
+      }
+
+    case 'DECREMENT':
+      return {
+        ...state,
+        count: state.count - 1,
+      }
+
+    case 'INCREMENT':
+      return {
+        ...state,
+        count: state.count + 1,
+      }
+
+    case 'SET_VALUE':
+      return {
+        ...state,
+        valueToAdd: action.payload,
+      }
+
+    default:
+      return state
+  }
+}
 
 const Counter = ({ initialCount }) => {
-  const [count, setCount] = useState(initialCount)
-  const [valueToAdd, setValueToAdd] = useState(0)
+  const [state, dispatch] = useReducer(reducer, {
+    count: initialCount,
+    valueToAdd: 0,
+  })
 
-  const handleChange = e => setValueToAdd(parseInt(e.target.value, 10) || 0)
+  const { count, valueToAdd } = state
 
-  const handleDecrement = () => setCount(count - 1)
+  const handleChange = e =>
+    dispatch({
+      type: 'SET_VALUE',
+      payload: parseInt(e.target.value, 10) || 0,
+    })
 
-  const handleIncrement = () => setCount(count + 1)
+  const handleDecrement = () => dispatch({ type: 'DECREMENT' })
+
+  const handleIncrement = () => dispatch({ type: 'INCREMENT' })
 
   const handleSubmit = e => {
     e.preventDefault()
-    setCount(prevCount => prevCount + valueToAdd)
-    setValueToAdd(0)
+    dispatch({ type: 'ADD_VALUE' })
   }
 
   return (
