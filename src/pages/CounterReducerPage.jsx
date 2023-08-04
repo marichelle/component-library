@@ -10,11 +10,10 @@ const INCREMENT_COUNT = 'INCREMENT'
 const SET_VALUE_TO_ADD = 'SET_VALUE'
 
 const reducer = (state, action) => {
-  const { type } = action
-
-  switch (type) {
+  switch (action.type) {
     case ADD_VALUE_TO_COUNT:
       return {
+        ...state,
         count: state.count + state.valueToAdd,
         valueToAdd: 0,
       }
@@ -38,7 +37,7 @@ const reducer = (state, action) => {
       }
 
     default:
-      return state
+      throw new Error('Unexpected action type: ' + action.type)
   }
 }
 
