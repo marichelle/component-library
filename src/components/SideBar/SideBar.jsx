@@ -17,6 +17,10 @@ const navigation = [
     path: '/counter',
   },
   {
+    name: 'Counter Reducer',
+    path: '/counter-reducer',
+  },
+  {
     name: 'Dropdown',
     path: '/dropdown',
   },

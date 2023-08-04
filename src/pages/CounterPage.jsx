@@ -10,14 +10,16 @@ const Counter = ({ initialCount }) => {
     <div>
       <h1>Start at {initialCount}</h1>
       <h2>Count is {count}</h2>
-      <Button className="w-full" onClick={handleDecrement}>
-        <MinusSmallIcon className="w-7 h-7" />
-        Decrement
-      </Button>
-      <Button className="w-full" onClick={handleIncrement}>
-        <PlusSmallIcon className="w-7 h-7" />
-        Increment
-      </Button>
+      <div className="flex flex-row">
+        <Button className="w-full" onClick={handleIncrement}>
+          <PlusSmallIcon className="w-7 h-7" />
+          Increment
+        </Button>
+        <Button className="w-full" onClick={handleDecrement}>
+          <MinusSmallIcon className="w-7 h-7" />
+          Decrement
+        </Button>
+      </div>
     </div>
   )
 }

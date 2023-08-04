@@ -3,6 +3,7 @@ import SideBar from './components/SideBar/SideBar'
 import AccordionPage from './pages/AccordionPage'
 import ButtonPage from './pages/ButtonPage'
 import CounterPage from './pages/CounterPage'
+import CounterReducerPage from './pages/CounterReducerPage'
 import DropdownPage from './pages/DropdownPage'
 import ModalPage from './pages/ModalPage'
 import TablePage from './pages/TablePage'
@@ -24,6 +25,9 @@ function App() {
         </Route>
         <Route path="/counter">
           <CounterPage />
+        </Route>
+        <Route path="/counter-reducer">
+          <CounterReducerPage />
         </Route>
         <Route path="/dropdown">
           <DropdownPage />
