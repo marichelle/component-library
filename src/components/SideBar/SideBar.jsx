@@ -13,6 +13,10 @@ const navigation = [
     path: '/buttons',
   },
   {
+    name: 'Counter',
+    path: '/counter',
+  },
+  {
     name: 'Dropdown',
     path: '/dropdown',
   },
